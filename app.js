@@ -55,8 +55,9 @@ renderData()
 let editTask = async (id) => {
     let newValue = prompt("Enter new value");
 
-    if (newValue === null || newValue.trim() === "") {
+    if (!newValue || newValue.trim() === "") {
         alert("Please enter a valid value");
+        return;
     } else {
         const cityRef = doc(db, 'userTask', id);
         await updateDoc(cityRef, {
